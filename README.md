@@ -19,3 +19,5 @@ Handles rendering the interactive calendar. Highlights the current date and disp
 Contains the logic for navigating from the login page to the main calendar interface. Includes background animations for the login screen.
 3. tracker.js:
 Implements the mood tracking feature, allowing users to input their mood, description, and select a color. Data is saved and loaded for each specific date.
+
+Link to Website: https://chrisk36.github.io/Mood-Tracker/
