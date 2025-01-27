@@ -1,4 +1,3 @@
-// Select DOM elements
 const colorPicker = document.getElementById('color-wheel');
 const colorBox = document.getElementById('color-box');
 const moodInput = document.getElementById('mood');
@@ -7,33 +6,27 @@ const saveBtn = document.getElementById('save-btn');
 const errorMessage = document.getElementById('error-message');
 const backBtn = document.getElementById('back-btn');
 
-// Load saved mood entries from localStorage
 const savedMoods = JSON.parse(localStorage.getItem('moods')) || {};
 
-// Get the selected day, month, and year
 const selectedDay = parseInt(localStorage.getItem('selectedDay'), 10);
 const selectedMonth = parseInt(localStorage.getItem('selectedMonth'), 10);
 const selectedYear = parseInt(localStorage.getItem('selectedYear'), 10);
 
-// Display the selected date
 const dateInfo = document.getElementById('date-info');
-dateInfo.textContent = `Mood for ${selectedMonth + 1}/${selectedDay}/${selectedYear}`;
+dateInfo.textContent = `${selectedMonth + 1} - ${selectedDay} - ${selectedYear}`;
 
-// Check if there's a saved entry for the selected day
 const selectedDateString = `${selectedMonth + 1}/${selectedDay}/${selectedYear}`;
 const savedMood = savedMoods[selectedDateString];
 
-// If there's a saved mood, display it
 if (savedMood) {
     moodInput.value = savedMood.mood;
     descriptionInput.value = savedMood.description;
     colorBox.style.backgroundColor = savedMood.color;
     colorPicker.value = savedMood.color;
 } else {
-    colorBox.style.backgroundColor = '#ffffff'; // Default color if no mood saved
+    colorBox.style.backgroundColor = '#ffffff';
 }
 
-// Handle saving the mood entry
 saveBtn.addEventListener('click', () => {
     const mood = moodInput.value.trim();
     const description = descriptionInput.value.trim();
@@ -43,37 +36,30 @@ saveBtn.addEventListener('click', () => {
         return;
     }
 
-    // Save or update the mood and description for the selected day
     savedMoods[selectedDateString] = {
         mood: mood,
         description: description,
         color: colorPicker.value,
     };
 
-    // Save to localStorage
     localStorage.setItem('moods', JSON.stringify(savedMoods));
 
-    // Clear the inputs and show success message
     errorMessage.textContent = '';
-    window.location.href = 'calendar.html'; // Redirect to calendar page
+    window.location.href = 'calendar.html';
 });
 
-// Handle going back to the calendar page
 backBtn.addEventListener('click', () => {
-    window.location.href = 'calendar.html'; // Redirect to calendar page
+    window.location.href = 'calendar.html';
 });
 
-// When the user clicks on the color box, open the color picker
 colorBox.addEventListener('click', () => {
-    colorPicker.click(); // Programmatically open the hidden color picker
+    colorPicker.click();
 });
 
-// Update the color box when the user selects a color
 colorPicker.addEventListener('input', () => {
-    colorBox.style.backgroundColor = colorPicker.value; // Set the color box to the selected color
+    colorBox.style.backgroundColor = colorPicker.value;
 });
 
-// Background circles (for fun animation effect)
 const background = document.querySelector('.background');
 
 function createCircle() {
@@ -84,17 +70,14 @@ function createCircle() {
     circle.style.width = `${size}px`;
     circle.style.height = `${size}px`;
 
-    // Random horizontal position
-    const leftPosition = Math.random() * 100; // 0 to 100%
+    const leftPosition = Math.random() * 100;
     circle.style.left = `${leftPosition}%`;
 
-    const duration = Math.floor(Math.random() * 5) + 6.5; // Duration will be between 8 and 12 seconds
+    const duration = Math.floor(Math.random() * 5) + 6.5;
     circle.style.animationDuration = `${duration}s`;
 
-    // Append circle to the body
     document.body.appendChild(circle);
 
-    // Remove the circle after animation to keep the DOM clean
     circle.addEventListener('animationend', () => {
         circle.remove();
     });

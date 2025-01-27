@@ -4,7 +4,6 @@ loginBtn.addEventListener('click', () => {
     window.location.href = 'calendar.html';
 });
 
-// 2. Create a background container for the falling circles
 const background = document.querySelector('.background');
 
 function createCircle() {
@@ -15,17 +14,14 @@ function createCircle() {
     circle.style.width = `${size}px`;
     circle.style.height = `${size}px`;
 
-    // Random horizontal position
-    const leftPosition = Math.random() * 100; // 0 to 100%
+    const leftPosition = Math.random() * 100;
     circle.style.left = `${leftPosition}%`;
 
-    const duration = Math.floor(Math.random() * 5) + 6.5; // Duration will be between 8 and 12 seconds
+    const duration = Math.floor(Math.random() * 5) + 6.5;
     circle.style.animationDuration = `${duration}s`;
 
-    // Append circle to the body
     document.body.appendChild(circle);
 
-    // Remove the circle after animation to keep the DOM clean
     circle.addEventListener('animationend', () => {
         circle.remove();
     });
