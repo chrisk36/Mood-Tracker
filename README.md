@@ -2,6 +2,8 @@
  
 Mood Tracker Web App
 
+Project Time: 4 hours
+
 A simple web application to track your daily mood and store your reflections. The app allows users to select dates on a calendar, input their mood and description, and assign a color to represent their feelings visually.
 
 Features
