@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Mood for the Day</title>
+    <link rel="stylesheet" href="tracker.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Track Your Mood</h1>
+        <div id="date-info"></div>
+
+        <div class="color-picker">
+            <label for="color-wheel">Choose a color for your mood:</label>
+            <div id="color-box" class="color-box"></div>
+            <input type="color" id="color-wheel" name="color" />
+        </div>
+
+        <div class="mood-input">
+            <label for="mood">How are you feeling today?:</label>
+            <input type="text" id="mood">
+        </div>
+
+        <div class="description-input">
+            <label for="description">Describe what happened today:</label>
+            <textarea id="description" rows="4" placeholder="Write a description..."></textarea>
+        </div>
+
+        <button id="save-btn">Save Entry</button>
+        <button id="back-btn">Cancel</button>
+        <p id="error-message" class="error"></p>
+    </div>
+
+
+    <div class="background"></div>
+
+    <script src="tracker.js"></script>
+</body>
+</html>
